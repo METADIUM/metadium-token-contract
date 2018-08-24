@@ -1,0 +1,40 @@
+[StandardToken|
+balances: mapping(address => uint256)
+totalSupply : uint256
+allowed: mapping (address => mapping (address => uint256))
+|
++transfer()
++transferFrom()
++approve()
++increaseApproval()
++decreaseApproval()
+|
+* StandardToken
+* merged ERC20, ERC20Basic...
+]
+
+[Ownable|
+owner : address
+|
+transferOwnership() - onlyOwner
+onlyOwner - modifier
+]
+[Metadium|
+name : string
+symbol : string
+decimals : uint8
+INITIAL_SUPPLY : uint256
+transferEnabled : bool
+|
++enableTransfer() - onlyOwner
++disableTransfer() - onlyOwner
++transfer() - isTradable
++transferFrom() - isTradable
++burn - onlyOwner
+isTradable - modifier : owner only
+|
+Metadium Token Contract
+]
+
+[StandardToken]<:-[Metadium]
+[Ownable]<:-[Metadium]
